@@ -1,0 +1,24 @@
+RewriteEngine On
+
+RewriteBase /FarmConnect/
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^api/users/?([0-9]+)?/?$ api/users/index.php?id=$1 [QSA,L]
+
+RewriteRule ^api/products/?([0-9]+)?/?$ api/products/index.php?id=$1 [QSA,L]
+
+RewriteRule ^api/categories/?([0-9]+)?/?$ api/categories/index.php?id=$1 [QSA,L]
+
+RewriteRule ^api/locations/?([0-9]+)?/?$ api/locations/index.php?id=$1 [QSA,L]
+
+RewriteRule ^api/orders/?([0-9]+)?/?$ api/orders/index.php?id=$1 [QSA,L]
+
+RewriteRule ^api/media/upload/?$ api/media/index.php?action=upload [QSA,L]
+
+RewriteRule ^api/media/?([0-9]+)?/?$ api/media/index.php?id=$1 [QSA,L]
+
+RewriteRule ^api/reviews/?([0-9]+)?/?$ api/reviews/index.php?id=$1 [QSA,L]
+
+RewriteRule ^api/settings/?([0-9]+)?/?$ api/settings/index.php?id=$1 [QSA,L]

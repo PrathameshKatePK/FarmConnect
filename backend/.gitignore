@@ -1,0 +1,17 @@
+# Uploaded media
+uploads/media/*
+
+# Keep the upload folder itself
+!uploads/media/.gitkeep
+
+# Environment / sensitive configuration
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
