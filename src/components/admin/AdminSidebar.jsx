@@ -1,7 +1,56 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 function AdminSidebar() {
   const [isOpen, setIsOpen] = useState(false);
+
+  const navItems = [
+    {
+      to: "/admin/dashboard",
+      icon: "🏠",
+      label: "Dashboard",
+    },
+    {
+      to: "/admin/media",
+      icon: "🖼️",
+      label: "Media",
+    },
+    {
+      to: "/admin/users",
+      icon: "👥",
+      label: "Users",
+    },
+    {
+      to: "/admin/products",
+      icon: "🌾",
+      label: "Products",
+    },
+    {
+      to: "/admin/categories",
+      icon: "🗂️",
+      label: "Categories",
+    },
+    {
+      to: "/admin/orders",
+      icon: "📦",
+      label: "Orders",
+    },
+    {
+      to: "/admin/reviews",
+      icon: "⭐",
+      label: "Reviews",
+    },
+    {
+      to: "/admin/reports",
+      icon: "📊",
+      label: "Reports",
+    },
+    {
+      to: "/admin/settings",
+      icon: "⚙️",
+      label: "Settings",
+    },
+  ];
 
   return (
     <>
@@ -23,6 +72,7 @@ function AdminSidebar() {
           ${isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
         `}
       >
+        {/* Sidebar Header */}
         <div className="h-16 flex items-center justify-between px-6 border-b border-gray-700">
           <h1 className="text-xl font-bold">
             🌾 FarmConnect
@@ -36,70 +86,30 @@ function AdminSidebar() {
           </button>
         </div>
 
+        {/* Navigation */}
         <nav className="p-4 space-y-1">
-          <a
-            href="#"
-            className="flex items-center gap-3 px-4 py-3 rounded-lg bg-green-600"
-          >
-            🏠
-            <span>Dashboard</span>
-          </a>
+          {navItems.map((item) => (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              onClick={() => setIsOpen(false)}
+              className={({ isActive }) =>
+                `flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+                  isActive
+                    ? "bg-green-600 text-white"
+                    : "text-gray-300 hover:bg-gray-800 hover:text-white"
+                }`
+              }
+            >
+              <span className="text-lg">
+                {item.icon}
+              </span>
 
-          <a
-            href="#"
-            className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-800"
-          >
-            🖼️
-            <span>Media</span>
-          </a>
-
-          <a
-            href="#"
-            className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-800"
-          >
-            👥
-            <span>Users</span>
-          </a>
-
-          <a
-            href="#"
-            className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-800"
-          >
-            🌾
-            <span>Products</span>
-          </a>
-
-          <a
-            href="#"
-            className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-800"
-          >
-            📦
-            <span>Orders</span>
-          </a>
-
-          <a
-            href="#"
-            className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-800"
-          >
-            ⭐
-            <span>Reviews</span>
-          </a>
-
-          <a
-            href="#"
-            className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-800"
-          >
-            📊
-            <span>Reports</span>
-          </a>
-
-          <a
-            href="#"
-            className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-800"
-          >
-            ⚙️
-            <span>Settings</span>
-          </a>
+              <span>
+                {item.label}
+              </span>
+            </NavLink>
+          ))}
         </nav>
       </aside>
 
